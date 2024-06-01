@@ -22,25 +22,21 @@ public class ViewModel extends androidx.lifecycle.ViewModel {
     }
 
     public MutableLiveData<List<ChatMessage>> getAll() {
-        Log.d("POLUCHENIYE DLYA VIEW", "NE POLUCHIL");
         new Thread(new Runnable() {
             @Override
             public void run() {
                mutableLiveData.postValue(repository.getAll());
             }
         }).start();
-        Log.d("POLUCHENIYE DLYA VIEW", "POLUCHIL");
         return mutableLiveData;
     }
     public MutableLiveData<List<ChatMessage>> getById(int number) {
-        Log.d("POLUCHENIYE DLYA VIEW", "NE POLUCHIL");
         new Thread(new Runnable() {
             @Override
             public void run() {
                 mutableLiveData.postValue(repository.getById(number));
             }
         }).start();
-        Log.d("POLUCHENIYE DLYA VIEW", "POLUCHIL");
         return mutableLiveData;
     }
     public void insert(ChatMessage message) {

@@ -1,7 +1,5 @@
 package com.example.loramessenger.Database.Dao;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -17,15 +15,13 @@ import com.example.loramessenger.Database.Entity.ChatMessage;
 
 @Dao
 public interface DataDAO {
-    //@Query()
-    //int updateChannelById(Integer id, int content, String time);
-
     @Query("SELECT * FROM messages")
     List<ChatMessage> getAll();
 
     @Query("SELECT * FROM messages WHERE receiver = :receiver ORDER BY time ASC")
     @TypeConverters({AllConverter.class})
     List <ChatMessage> getById(int receiver);
+
     @Insert
     void insert(ChatMessage message);
 
@@ -34,9 +30,11 @@ public interface DataDAO {
 
     @Delete
     void delete(ChatMessage message);
+
     @Query("UPDATE messages SET content = :content, time = :time , " +
             "sender = :sender, receiver = :receiver")
     void updateChannelById(String content, String time, int sender, int receiver);
+
     @Query("DELETE FROM messages WHERE id = :id")
     void deleteById (int id);
 
