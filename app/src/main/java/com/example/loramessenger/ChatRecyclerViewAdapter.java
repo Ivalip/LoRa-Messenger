@@ -65,13 +65,9 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
     }
     public void removeAt(int position) {
-        Log.d("MESSAGES REMOVE", "PERED");
         chatMessages.remove(position);
-        Log.d("MESSAGES NOTIFY", "PERED");
         notifyItemRemoved(position);
-        Log.d("MESSAGES NOTIFY2", "POSLE");
         notifyItemRangeChanged(position, getItemCount());
-        Log.d("MESSAGES NOTIFY3", "POSLE");
     }
 
     public class NewViewHolder extends RecyclerView.ViewHolder {

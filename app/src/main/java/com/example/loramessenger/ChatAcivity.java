@@ -147,8 +147,6 @@ public class ChatAcivity extends AppCompatActivity implements SerialInputOutputM
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-//                            viewModel.mutableLiveData.postValue(
-//                                    viewModel.repository.getById(numberOfChat));
                                 viewModel.mutableLiveData = viewModel.getById(numberOfChat);
                             }
                         }).start();
@@ -175,7 +173,6 @@ public class ChatAcivity extends AppCompatActivity implements SerialInputOutputM
             String time = message.substring(message.indexOf("<TIME>") + 6, message.length() - 5);
             int id = Integer.parseInt(message.substring(message.indexOf("<ID>") + 4, message.indexOf("<START>")));
             String text = message.substring(message.indexOf("<START>") + 7, message.indexOf("<TIME>"));
-            //Toast.makeText(this, "TIME: " + time + "\nTEXT: " + text + "\nID" + id, Toast.LENGTH_LONG).show();
             viewModel.insert(new ChatMessage(text, formater(time), 1, id));
             new Thread(new Runnable() {
                 @Override
